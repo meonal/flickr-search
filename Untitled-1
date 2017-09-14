@@ -1,0 +1,32 @@
+
+@startuml
+
+!define SenmonName 誤認逮捕された専門学校生
+!define CriminalName 犯罪中学生
+!define RakusatsuName 落札者
+
+participant "SenmonName" as Senmon
+participant "CriminalName" as Criminal
+participant "女子高生ら2人" as JK_2
+participant "チケット販売サイト" as TicketShop
+participant "RakusatsuName" as Rakusatsu
+
+Senmon     -> Criminal   : チケット 8 万円で売ります
+Senmon     <- Criminal   : 買います
+Senmon     -> Criminal   : 「SenmonName」の口座を教える
+Criminal   -> JK_2       : チケット 4 万円で売ります
+Criminal   <- JK_2       : 買います
+Criminal   -> JK_2       : 「SenmonName」の口座を教える
+JK_2       -> Senmon     : それぞれ 4 万円入金 (計 8 万円)
+Senmon     -> Criminal   : チケット送付先を教えてください
+Criminal   -> TicketShop : チケットを 6 万円で出品
+TicketShop <- Rakusatsu  : 購入する
+Criminal   -> TicketShop : 「RakusatsuName」情報を取得
+Criminal   <- TicketShop : 「RakusatsuName」情報を表示
+Senmon     <- Criminal   : 「RakusatsuName」の住所を教える
+Senmon     -> Rakusatsu  : チケットを送付
+TicketShop <- Rakusatsu  : チケット受け取り確認
+Criminal   -> TicketShop : 売上出金操作
+Criminal   <- TicketShop : 売上を「CriminalName」の口座に入金
+
+@enduml
