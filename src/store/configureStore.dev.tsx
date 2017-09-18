@@ -1,21 +1,24 @@
 import { createStore, applyMiddleware, compose } from 'redux';
-import { persistState } from 'redux-devtools';
-import thunk from 'redux-thunk';
 import rootReducer from '../reducers';
-import DevTools from '../containers/DevTools';
+import thunk from 'redux-thunk';
 import logger from 'redux-logger';
+import { historyMiddleware } from '../middleware/history';
+import { autoRehydrate } from 'redux-persist'
+import { persistState } from 'redux-devtools';
+// import DevTools from '../containers/DevTools';
 
 const match = window.location.href.match(/[?&]debug_session=([^&#]+)\b/);
-const sessionKey = match != null ? match.find(_ => true)! : 'default';
+const sessionKey = match != null ? match.find(_ => true)! : '';
 
 const enhancer = compose(
-  applyMiddleware(thunk, logger),
-  DevTools.instrument(),
+  applyMiddleware(thunk, logger, historyMiddleware),
+  autoRehydrate(),
+  // DevTools.instrument(),
   persistState(sessionKey)
 );
 
-export default function configureStore(initialState: any) {
-  const store = createStore(rootReducer, initialState, enhancer);
+export default function configureStore() {
+  const store = createStore(rootReducer, undefined, enhancer);
 
   if (module.hot) {
     module.hot.accept('../reducers', () =>

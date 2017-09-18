@@ -1,0 +1,19 @@
+.pager {
+  text-align: center;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.r {
+  margin-right: 15px;
+}
+
+.page-count {
+  margin: 10px;
+}
+
+.margin {
+  margin: 10px !important;
+}

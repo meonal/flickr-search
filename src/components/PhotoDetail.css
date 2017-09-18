@@ -1,0 +1,75 @@
+.photo-detail {
+  display: flex;
+  flex-direction: column;
+  margin-top: 280px 0px;
+}
+
+.description {
+  margin: 20px 50px;
+}
+
+.photo-area {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.photo {
+  max-width: 1024px;
+  max-height: 1024px;
+}
+
+.thumbnail-list {
+  display: flex;
+  justify-content: center;
+}
+
+.thumbnail {
+  object-fit: cover;
+  width: 96px;
+  height: 96px;
+  margin: 2px;
+}
+
+.thumbnail:hover {
+  box-shadow: 0px 0px 10px #009cff;
+}
+
+.thumbnail-gray {
+  composes: thumbnail;
+  filter: grayscale(1);
+}
+
+.title {
+  font-weight: bold;
+  font-size: 24px;
+}
+
+.author {
+  margin: 10px 0px;
+  font-size: 18px;
+}
+
+.count {
+  border-radius: 3px;
+  display: inline-block !important;
+  margin: 0 5px;
+  padding: 0 6px !important;
+  font: bold 16px "lucida grande", sans-serif !important;
+  text-decoration: none;
+  color: #0069b1 !important;
+  background-color: #cceeff;
+}
+
+.info {
+  display: flex;
+  justify-content: space-between;
+}
+
+.space {
+  margin: 0px 5px;
+}
+
+.bold {
+  font-weight: bold;
+}

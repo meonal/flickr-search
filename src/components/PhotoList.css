@@ -1,0 +1,16 @@
+.photo-list {
+  display: flex;
+  justify-content: space-around;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin: 10px 0px 20px 0px;
+}
+
+.dummy {
+  width: 200;
+  height: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+}

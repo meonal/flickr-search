@@ -1,13 +1,18 @@
 import * as React from 'react';
 import { Provider } from 'react-redux';
-import HelloApp from './HelloApp';
+import { ConnectedRouter } from 'react-router-redux';
+import Routes from './Routes';
 
 export default class Root extends React.Component<any, any> {
   render() {
-    const { store } = this.props;
+    const { store, history } = this.props;
     return (
       <Provider store={store}>
-        <HelloApp />
+        <ConnectedRouter history={history}>
+          <div>
+            <Routes />
+          </div>
+        </ConnectedRouter>
       </Provider>
     );
   }

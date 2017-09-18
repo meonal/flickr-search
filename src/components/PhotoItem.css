@@ -1,0 +1,47 @@
+.photo-item {
+  width: 200px;
+  text-align: center;
+  margin: 5px;
+}
+
+.photo-area {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 200px;
+  margin: 5px;
+}
+
+.photo {
+  max-width: 200px;
+  max-height: 200px;
+}
+
+.title {
+  max-width: 200px;
+  max-height: 3em;
+  overflow: hidden;
+  font-weight: bold;
+}
+
+.author {
+  max-width: 200px;
+  max-height: 3em;
+  overflow: hidden;
+  margin-bottom: 8px;
+}
+
+.count {
+  border-radius: 3px;
+  display: inline-block !important;
+  margin: 0 5px;
+  padding: 0 6px !important;
+  font: bold 10px/18px "lucida grande", sans-serif !important;
+  text-decoration: none;
+  color: #0069b1 !important;
+  background-color: #cceeff;
+}
+
+.space {
+  margin-right: 5px;
+}
