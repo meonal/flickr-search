@@ -13,7 +13,7 @@ interface Props {
   actions: {
     search: SearchActions;
     setting: SettingActions;
-  }
+  };
 }
 
 class GeneralSetting extends React.Component<Props, object> {

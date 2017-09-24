@@ -22,7 +22,7 @@ export const sortPopular = [
 ];
 
 // flickr.api
-export const apiEndpoint = 'https://flickr.azurewebsites.net/api/HttpTriggerJS1?code=dmd737ng/My0nxYL/LJ0MulQa9ewZrUjex/eF/SqM686SRyudGH4Rw=='
+export const apiEndpoint = 'https://flickr.azurewebsites.net/api/HttpTriggerJS1?code=dmd737ng/My0nxYL/LJ0MulQa9ewZrUjex/eF/SqM686SRyudGH4Rw==';
 
 const commonParams = {
   format: 'json',

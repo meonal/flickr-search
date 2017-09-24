@@ -15,7 +15,7 @@ interface DispatchProps {
   actions: {
     search: SearchActions;
     setting: SettingActions;
-  }
+  };
 }
 
 type SettingProps = StateProps & DispatchProps;

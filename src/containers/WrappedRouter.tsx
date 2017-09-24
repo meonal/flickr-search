@@ -2,7 +2,7 @@ import * as React from 'react';
 import { ConnectedRouter } from 'react-router-redux';
 import { connect } from 'react-redux';
 import { State } from '../types';
-import './WrappedRouter.css'
+import './WrappedRouter.css';
 
 export class WrappedRouter extends React.Component<any, any> {
   render() {
@@ -10,7 +10,7 @@ export class WrappedRouter extends React.Component<any, any> {
     const style = 'wrapper theme-' + theme;
     return (
       <div styleName={style}>
-        <ConnectedRouter {...this.props } />
+        <ConnectedRouter {...this.props} />
       </div>
     );
   }

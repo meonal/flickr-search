@@ -98,9 +98,9 @@ export interface LocationState {
 }
 
 export enum ColorTheme {
-  Light = "light",
-  Dark = "dark",
-};
+  Light = 'light',
+  Dark = 'dark',
+}
 
 export interface SettingState {
   theme: ColorTheme;
