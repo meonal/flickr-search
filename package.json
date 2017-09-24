@@ -2,7 +2,7 @@
   "name": "my-ts",
   "version": "0.1.0",
   "private": true,
-  "homepage": "http://meonal.github.io/redux-practice",
+  "homepage": "http://meonal.github.io/flickr-search",
   "dependencies": {
     "@types/jest": "^20.0.8",
     "@types/node": "^8.0.28",
