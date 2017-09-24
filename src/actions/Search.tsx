@@ -118,8 +118,7 @@ export default class SearchActions {
     });
 
   private async fetchWorker(getState: () => State, params: any) {
-    const param = this.serializeParams(params);
-    const res = await axios.post(constants.apiEndpoint, { name: param });
+    const res = await axios.get(constants.apiEndpoint, { params });
     if (res.status >= 300 && res.status < 200) {
       throw new MyError(`[server error] ${res.status} ${res.statusText}`);
     }
@@ -134,14 +133,5 @@ export default class SearchActions {
       return { ...x, isFav: exist !== undefined };
     });
     return { items, photos: data.photos };
-  }
-
-  private serializeParams = (obj: any) => {
-    let str: string[] = [];
-    for (const p in obj)
-      if (obj.hasOwnProperty(p)) {
-        str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
-      }
-    return str.join("&");
   }
 }
