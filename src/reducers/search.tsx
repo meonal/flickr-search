@@ -30,6 +30,7 @@ const search = reducerWithInitialState(initialState)
     const { items, photos } = payload.result;
     const condition = {
       ...payload.params,
+      message: '',
       page: photos.page,
       pages: photos.pages,
       perpage: photos.perpage,
@@ -51,6 +52,7 @@ const search = reducerWithInitialState(initialState)
     const { items, photos } = payload.result;
     const condition = {
       ...payload.params,
+      message: '',
       page: photos.page,
       pages: photos.pages,
       perpage: photos.perpage,
