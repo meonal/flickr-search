@@ -15,6 +15,7 @@ const actionCreator = actionCreatorFactory();
 
 export const setDetail = actionCreator<{ id: string, type: DetailType }>('SET_DETAIL');
 export const toggleFav = actionCreator<{ id: string, item: PhotoItem | undefined }>('TOGGLE_FAV');
+export const clearFavs = actionCreator('CLEAR_FAVS');
 export const searchPhoto = actionCreator.async<
   State,
   SearchCondition,
@@ -56,6 +57,7 @@ export default class SearchActions {
 
   // Action
   toggleFav = (id: string) => this.dispatch(this.toggleFavWorker(id));
+  clearFav = () => this.dispatch(clearFavs());
   searchPhoto = async (condition: SearchCondition) => await this.dispatch(this.searchPhotoWorker(condition));
   fetchPhoto = async (condition: SearchCondition) => await this.dispatch(this.fetchPhotoWorker(condition));
 

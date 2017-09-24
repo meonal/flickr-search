@@ -4,7 +4,7 @@ import * as actions from '../actions/Search';
 
 const initialState: FavState = {
   viewType: ViewType.Normal,
-  photos: [],
+  photos: []
 };
 
 const fav = reducerWithInitialState(initialState)
@@ -19,6 +19,9 @@ const fav = reducerWithInitialState(initialState)
       newState.photos.splice(index, 1);
     }
     return newState;
+  })
+  .case(actions.clearFavs, (state) => {
+    return { ...state, photos: [] };
   })
   ;
 

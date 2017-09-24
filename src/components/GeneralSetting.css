@@ -1,0 +1,16 @@
+.general-setting {
+  margin-left: 30px;
+  width: 800px;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.r {
+  margin-right: 15px;
+}
+
+.margin {
+  margin: 10px !important;
+}
