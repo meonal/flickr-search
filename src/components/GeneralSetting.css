@@ -1,6 +1,10 @@
 .general-setting {
-  margin-left: 30px;
-  width: 800px;
+  width: 600px;
+}
+
+.item {
+  display: flex;
+  justify-content: space-between;
 }
 
 .bold {

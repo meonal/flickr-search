@@ -6,7 +6,7 @@ import About from './About';
 import Detail from './Detail';
 import { Route } from 'react-router';
 
-export default class Routes extends React.Component<any, any> {
+export class Routes extends React.Component<any, any> {
   render() {
     return (
       <div>
@@ -21,3 +21,4 @@ export default class Routes extends React.Component<any, any> {
     );
   }
 }
+export default Routes;

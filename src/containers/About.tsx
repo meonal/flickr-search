@@ -1,5 +1,6 @@
 import * as React from 'react';
 import Header from '../components/Header';
+import { PageHeader } from 'react-bootstrap';
 import './Container.css';
 
 class About extends React.Component<any, any> {
@@ -8,7 +9,8 @@ class About extends React.Component<any, any> {
       <div>
         <Header />
         <div styleName="page-body">
-          This application is sample app for react, redux and typescript.
+          <PageHeader>About</PageHeader>
+          <h4>This application is sample app for react, redux and typescript.</h4>
         </div>
       </div>
     );

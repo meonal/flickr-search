@@ -1,0 +1,17 @@
+.wrapper {
+    padding: 80px 0px;
+    min-height: 100vh;
+}
+
+.theme-dark {
+    color: #BBBBBB;
+    background-color: #202020;
+}
+
+.theme-dark a {
+    color: #7BD5FF;
+}
+
+.theme-light {}
+
+.theme-light a {}

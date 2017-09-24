@@ -4,6 +4,7 @@ import PhotoList from '../components/PhotoList';
 import SearchActions from '../actions/Search';
 import { connect } from 'react-redux';
 import { State, PhotoViewItem, ViewType } from '../types';
+import { PageHeader } from 'react-bootstrap';
 import './Container.css';
 
 interface StateProps {
@@ -23,7 +24,8 @@ class Fav extends React.Component<SearchProps, any> {
       <div>
         <Header />
         <div styleName="page-body">
-          <h2 styleName="center">{items.length === 0 ? 'Fav list is empty.' : ''}</h2>
+          <PageHeader>Fav</PageHeader>
+          <h4>{items.length === 0 ? '写真をFavしよう！' : ''}</h4>
           <PhotoList items={items} actions={actions} />
         </div>
       </div>

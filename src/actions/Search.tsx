@@ -40,7 +40,6 @@ export default class SearchActions {
   }
   static getInstance(dispatch: any) {
     if (!this.instance) {
-      console.log('create instance: SearchActions');
       this.instance = new SearchActions(dispatch);
     }
     return this.instance;

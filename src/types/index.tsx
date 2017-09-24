@@ -9,6 +9,7 @@ export interface State {
   fav: FavState;
   detail: DetailState;
   location: LocationState;
+  setting: SettingState;
   router: RouterState;    // react-router-redux
 }
 
@@ -94,6 +95,15 @@ export interface DetailState {
 export interface LocationState {
   prevPath: string;
   currentPath: string;
+}
+
+export enum ColorTheme {
+  Light = "light",
+  Dark = "dark",
+};
+
+export interface SettingState {
+  theme: ColorTheme;
 }
 
 // props (View)
