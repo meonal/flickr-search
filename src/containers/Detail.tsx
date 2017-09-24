@@ -5,7 +5,6 @@ import PhotoDetail from '../components/PhotoDetail';
 import SearchActions from '../actions/Search';
 import { connect } from 'react-redux';
 import { State, PhotoViewItem, PhotoItem, DetailType } from '../types';
-
 import './Container.css';
 
 interface StateProps {
@@ -46,13 +45,18 @@ function findNeighbor<T>(items: T[], ownIdx: number, radius: number): T[] {
 }
 
 export function mapStateToProps(state: State): StateProps {
-  const detail = state.detail;
   const photos = state.detail.type === DetailType.Fav
     ? state.fav.photos
     : state.search.photos;
-  const idx = photos.findIndex(photo => photo.id === detail.id)!;
+  const match = state.location.currentPath.match(/[0-9]+/);
+  if (match === null) {
+    throw new Error("ブラウザの戻るでここに来ること自体おかしいけどなぜか来る:"
+      + state.location.currentPath);
+  }
+  const id = match![0];
+  const idx = photos.findIndex(photo => photo.id === id)!;
   const neighbors = findNeighbor<PhotoItem>(photos, idx, 2).map(x => new PhotoViewItem(x));
-  const item = neighbors.find(x => x.id === detail.id)!;
+  const item = neighbors.find(x => x.id === id)!;
   return { item, neighbors };
 }
 
