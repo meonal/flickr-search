@@ -24,11 +24,8 @@ class PhotoDetail extends React.Component<Props, object> {
 
     const thumbnails = neighbors.map(x => {
       const style = 'thumbnail' + (x.id === id ? '-gray' : '');
-      const img = <img key={x.id} styleName={style} src={x.url_s} alt={x.title} />;
-      return x.id === id
-        ? img
-        : <a href="#" key={x.id}
-          onClick={() => actions.gotoDetail(x.id, pathname)}>{img}</a>;
+      const onclick = x.id === id ? undefined : () => actions.gotoDetail(x.id, pathname);
+      return <img key={x.id} styleName={style} src={x.url_s} alt={x.title} onClick={onclick} />;
     });
 
     const bsStyle = item.isFav ? 'success' : 'primary';
