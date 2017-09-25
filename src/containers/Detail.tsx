@@ -20,7 +20,7 @@ class Detail extends React.Component<SearchProps, any> {
     const { state, actions } = this.props;
     const pathname = (this.props as any).match.url;
     const id = (this.props as any).match.params.id;
-    console.log("pathname render: " + pathname);
+    console.log('pathname render: ' + pathname);
 
     const photos = state.detail.type === DetailType.Fav
       ? state.fav.photos
@@ -54,7 +54,7 @@ function findNeighbor<T>(items: T[], ownIdx: number, radius: number): T[] {
 }
 
 export function mapStateToProps(state: State): StateProps {
-  console.log("pathname map:    " + state.router.location!.pathname);
+  console.log('pathname map:    ' + state.router.location!.pathname);
   // ブラウザの「戻る」の場合、pathnameが遷移先になりIDが取れないためrenderで絞込する
   // ('/detail/123456'から'/'に戻る場合、ここで取れるpathnameは'/'になる)
   return { state };

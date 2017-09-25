@@ -96,7 +96,7 @@ export default class SearchActions {
 
   // 写真の検索
   private searchPhotoWorker = bindThunkAction(searchPhoto,
-    async (payload, _, getState) => {
+                                              async (payload, _, getState) => {
       const params = {
         ...constants.searchParams,
         text: payload.text,
@@ -108,7 +108,7 @@ export default class SearchActions {
 
   // 指定ユーザの写真を取得
   private fetchPhotoWorker = bindThunkAction(fetchPhoto,
-    async (payload, _, getState) => {
+                                             async (payload, _, getState) => {
       const params = {
         ...constants.popularParams,
         user_id: payload.user_id,
