@@ -7,6 +7,12 @@ FlickrAPIを叩いて画像を検索したりします。
 APIのEndpointはAzure Funcitionsで作っています。  
 cold startのため初回の検索は10秒ほどかかります。
 
+## 使い方
+- yarn install
+- yarn start
+
+適当な場所にcloneして上記実行。
+
 ## 基本構成
 - react 15.6.1
 - react-edux 5.0.6
