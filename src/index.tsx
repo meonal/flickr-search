@@ -14,8 +14,8 @@ import crosstabSync from 'redux-persist-crosstab';
 export const store = configureStore();
 
 // stateの永続化＆ブラウザ内での同期
-const persistor = persistStore(store);
-crosstabSync(persistor, { blacklist: ['router', 'location'] });
+const persistor = persistStore(store, { blacklist: ['router'] });
+crosstabSync(persistor, { blacklist: ['router'] });
 
 render(
   <AppContainer>
