@@ -8,6 +8,7 @@ const Lightbox = require('react-image-lightbox');
 interface Props {
   items: PhotoViewItem[];
   actions: SearchActions;
+  isLoading?: boolean;
 }
 
 class PhotoList extends React.Component<Props, object> {
@@ -24,7 +25,8 @@ class PhotoList extends React.Component<Props, object> {
 
   render() {
     const { photoIndex, isOpen } = this.state as any;
-    const { items, actions } = this.props;
+    const { items, actions, isLoading } = this.props;
+    const style = 'photo-list' + (isLoading ? '-loading' : '');
     const photoItems = items.map((item, index) => {
       return <PhotoItem key={item.id} item={item} actions={actions}
         index={index} onPhotoClick={this.openLightbox} />;
@@ -36,7 +38,7 @@ class PhotoList extends React.Component<Props, object> {
     //const dummyItems = Array(10).fill(0).map((_, i) => <li styleName="dummy"></li>);
 
     return (
-      <div styleName="photo-list">
+      <div styleName={style}>
         {photoItems}
 
         {isOpen && // オーバーレイでLightboxを表示

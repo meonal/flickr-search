@@ -12,6 +12,7 @@ interface StateProps {
   items: PhotoViewItem[];
   viewType: ViewType;
   condition: SearchCondition;
+  isLoading: boolean;
 }
 interface DispatchProps {
   actions: SearchActions;
@@ -20,13 +21,13 @@ type SearchProps = StateProps & DispatchProps;
 
 class Search extends React.Component<SearchProps, any> {
   render() {
-    const { items, condition, actions } = this.props;
+    const { items, condition, actions, isLoading } = this.props;
     return (
       <div>
         <Header />
         <div styleName="page-body">
           <SearchBar current={condition} actions={actions} />
-          <PhotoList items={items} actions={actions} />
+          <PhotoList items={items} actions={actions} isLoading={isLoading} />
           {items.length > 0 ? <Pager current={condition} actions={actions} inverse={true} /> : ''}
         </div>
       </div>
@@ -40,6 +41,7 @@ export function mapStateToProps(state: State): StateProps {
     items: search.photos.map(x => new PhotoViewItem(x)),
     viewType: search.viewType,
     condition: search.condition,
+    isLoading: search.isLoading,
   };
 }
 

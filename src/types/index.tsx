@@ -16,6 +16,7 @@ export interface SearchState {
   viewType: ViewType;
   photos: PhotoItem[];
   condition: SearchCondition;
+  isLoading: boolean;
 }
 
 export class SearchCondition {

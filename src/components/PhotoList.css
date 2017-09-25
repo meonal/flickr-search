@@ -6,6 +6,11 @@
   margin: 10px 0px 20px 0px;
 }
 
+.photo-list-loading {
+  composes: photo-list;
+  opacity: 0.5;
+}
+
 .dummy {
   width: 200;
   height: 0;
