@@ -26,14 +26,14 @@ class Detail extends React.Component<SearchProps, any> {
       ? state.fav.photos
       : state.search.photos;
     const idx = photos.findIndex(photo => photo.id === id)!;
-    const neighbors = findNeighbor<PhotoItem>(photos, idx, 2).map(x => new PhotoViewItem(x));
-    const item = neighbors.find(x => x.id === id)!;
+    const thumbnails = findNeighbor<PhotoItem>(photos, idx, 2).map(x => new PhotoViewItem(x));
+    const item = thumbnails.find(x => x.id === id)!;
 
     return (
       <div>
         <Header />
         <div styleName="page-body">
-          <PhotoDetail item={item} neighbors={neighbors} actions={actions} />
+          <PhotoDetail item={item} thumbnails={thumbnails} actions={actions} />
         </div>
       </div>
     );

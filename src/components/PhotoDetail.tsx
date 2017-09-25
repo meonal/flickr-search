@@ -8,7 +8,7 @@ import './PhotoDetail.css';
 
 interface Props {
   item: PhotoViewItem;
-  neighbors: PhotoViewItem[];
+  thumbnails: PhotoViewItem[];
   actions: SearchActions;
 }
 
@@ -16,13 +16,13 @@ class PhotoDetail extends React.Component<Props, object> {
   condition = new SearchCondition(SearchType.User);
 
   render() {
-    const { item, neighbors, actions } = this.props;
+    const { item, thumbnails, actions } = this.props;
     if (item === undefined) return null;
 
     const id = item.id;
     const pathname = (this.props as any).location.pathname;
 
-    const thumbnails = neighbors.map(x => {
+    const thumbnailElements = thumbnails.map(x => {
       const style = 'thumbnail' + (x.id === id ? '-gray' : '');
       const onclick = x.id === id ? undefined : () => actions.gotoDetail(x.id, pathname);
       return <img key={x.id} styleName={style} src={x.url_s} alt={x.title} onClick={onclick} />;
@@ -36,7 +36,7 @@ class PhotoDetail extends React.Component<Props, object> {
     return (
       <div styleName="photo-detail">
         <div styleName="thumbnail-list">
-          {thumbnails}
+          {thumbnailElements}
         </div>
         <div styleName="description">
           <div styleName="title">{item.title}</div>
