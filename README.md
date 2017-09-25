@@ -21,9 +21,9 @@ Create React Appでyarn install, yarn eject。typescriptを最新にアップデ
 - redux-devtools
 - redux-logger
 
-hot reload & time travel debugのために導入。
-hot reloadは便利。これなくして開発するのはちょっとしんどい。
-time travelは正直あんまり使わない。
+hot reload & time travel debugのために導入。  
+hot reloadは便利。これなくして開発するのはちょっとしんどい。  
+time travelは正直あんまり使わない。  
 今回のケースにおいては、後述のステートの永続化で十分だった。
 
 ### Action
