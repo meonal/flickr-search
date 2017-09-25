@@ -1,6 +1,5 @@
 import * as React from 'react';
 import Header from '../components/Header';
-// import SearchBar from '../components/SearchBar'
 import PhotoDetail from '../components/PhotoDetail';
 import SearchActions from '../actions/Search';
 import { connect } from 'react-redux';
@@ -8,8 +7,7 @@ import { State, PhotoViewItem, PhotoItem, DetailType } from '../types';
 import './Container.css';
 
 interface StateProps {
-  item: PhotoViewItem;
-  neighbors: PhotoViewItem[];
+  state: State;
 }
 interface DispatchProps {
   actions: SearchActions;
@@ -19,7 +17,18 @@ type SearchProps = StateProps & DispatchProps;
 
 class Detail extends React.Component<SearchProps, any> {
   render() {
-    const { item, neighbors, actions } = this.props;
+    const { state, actions } = this.props;
+    const pathname = (this.props as any).match.url;
+    const id = (this.props as any).match.params.id;
+    console.log("pathname render: " + pathname);
+
+    const photos = state.detail.type === DetailType.Fav
+      ? state.fav.photos
+      : state.search.photos;
+    const idx = photos.findIndex(photo => photo.id === id)!;
+    const neighbors = findNeighbor<PhotoItem>(photos, idx, 2).map(x => new PhotoViewItem(x));
+    const item = neighbors.find(x => x.id === id)!;
+
     return (
       <div>
         <Header />
@@ -45,19 +54,10 @@ function findNeighbor<T>(items: T[], ownIdx: number, radius: number): T[] {
 }
 
 export function mapStateToProps(state: State): StateProps {
-  const photos = state.detail.type === DetailType.Fav
-    ? state.fav.photos
-    : state.search.photos;
-  const match = state.location.currentPath.match(/[0-9]+/);
-  if (match === null) {
-    throw new Error("ブラウザの戻るでここに来ること自体おかしいけどなぜか来る:"
-      + state.location.currentPath);
-  }
-  const id = match![0];
-  const idx = photos.findIndex(photo => photo.id === id)!;
-  const neighbors = findNeighbor<PhotoItem>(photos, idx, 2).map(x => new PhotoViewItem(x));
-  const item = neighbors.find(x => x.id === id)!;
-  return { item, neighbors };
+  console.log("pathname map:    " + state.router.location!.pathname);
+  // ブラウザの「戻る」の場合、pathnameが遷移先になりIDが取れないためrenderで絞込する
+  // ('/detail/123456'から'/'に戻る場合、ここで取れるpathnameは'/'になる)
+  return { state };
 }
 
 export function mapDispatchToProps(dispatch: any): DispatchProps {

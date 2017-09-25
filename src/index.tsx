@@ -8,7 +8,6 @@ import './index.css';
 import Root from './containers/Root';
 import configureStore from './store/configureStore';
 import history from './middleware/history';
-import { locationChanged } from './actions/Location';
 import { persistStore } from 'redux-persist';
 import crosstabSync from 'redux-persist-crosstab';
 
@@ -17,9 +16,6 @@ export const store = configureStore();
 // stateの永続化＆ブラウザ内での同期
 const persistor = persistStore(store);
 crosstabSync(persistor, { blacklist: ['router', 'location'] });
-
-// save prev location
-history.listen(location => store.dispatch(locationChanged(location.pathname)));
 
 render(
   <AppContainer>
