@@ -24,7 +24,7 @@ class PhotoDetail extends React.Component<Props, object> {
 
     const thumbnailElements = thumbnails.map(x => {
       const style = 'thumbnail' + (x.id === id ? '-gray' : '');
-      const onclick = x.id === id ? undefined : () => actions.gotoDetail(x.id, pathname);
+      const onclick = x.id === id ? undefined : () => actions.routing.gotoDetail(x.id, pathname);
       return <img key={x.id} styleName={style} src={x.url_s} alt={x.title} onClick={onclick} />;
     });
 

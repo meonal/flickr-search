@@ -3,8 +3,9 @@ import './GeneralSetting.css';
 import SearchActions from '../actions/Search';
 import SettingActions from '../actions/Setting';
 import { ColorTheme, SettingState } from '../types';
+import Dialog from './Dialog';
 import {
-  Button, Modal, ListGroup, ListGroupItem,
+  Button, ListGroup, ListGroupItem,
   ToggleButton, ToggleButtonGroup
 } from 'react-bootstrap';
 
@@ -21,27 +22,41 @@ class GeneralSetting extends React.Component<Props, object> {
     super(props);
     this.state = {
       showModal: false,
-      title: '',
       message: '',
     };
     this.close = this.close.bind(this);
+    this.deleteUser = this.deleteUser.bind(this);
     this.setTheme = this.setTheme.bind(this);
+    this.resetFav = this.resetFav.bind(this);
   }
-  close() {
-    this.setState({ showModal: false });
-  }
-  open() {
+  closeDialog: () => void;
+
+  openDialog(onClose?: () => void) {
+    this.closeDialog = onClose ? onClose : this.close;
     this.setState({ showModal: true });
   }
-  resetFav(title: string, message: string) {
+  close = () => {
+    this.setState({ showModal: false });
+  }
+  resetFav() {
     const { actions } = this.props;
     actions.search.clearFav();
-    this.setState({ title, message });
-    this.open();
+    this.setState({ message: 'Favをリセットしました。' });
+    this.openDialog();
   }
   setTheme(val: any) {
     const { actions } = this.props;
     actions.setting.setTheme(val);
+  }
+  async deleteUser() {
+    const { actions } = this.props;
+    const message = await actions.setting.deleteUser();
+    this.setState({ message });
+    this.openDialog(() => {
+      this.close();
+      const { actions } = this.props;
+      actions.setting.routing.gotoSearch();
+    });
   }
 
   render() {
@@ -63,22 +78,21 @@ class GeneralSetting extends React.Component<Props, object> {
           <ListGroupItem bsStyle="danger" header="Favのリセット">
             <div styleName="item">
               <span>すべてのFavを削除します。この操作は戻せません。</span>
-              <Button bsStyle="danger" onClick={() => this.resetFav('Setting', 'Favをリセットしました。')} >Reset</Button>
+              <Button bsStyle="danger" onClick={this.resetFav} >Reset</Button>
+            </div>
+          </ListGroupItem>
+          <ListGroupItem bsStyle="danger" header="アカウントの削除">
+            <div styleName="item">
+              <div>
+                アカウントを削除します。アカウントに紐づくユーザー情報、<br />
+                Fav、Settingも削除します。この操作は戻せません。
+              </div>
+              <Button bsStyle="danger" onClick={this.deleteUser} >Delete</Button>
             </div>
           </ListGroupItem>
         </ListGroup>
 
-        <Modal show={state.showModal} onHide={this.close}>
-          <Modal.Header closeButton>
-            <Modal.Title>{state.title}</Modal.Title>
-          </Modal.Header>
-          <Modal.Body>
-            <h4>{state.message}</h4>
-          </Modal.Body>
-          <Modal.Footer>
-            <Button onClick={this.close}>Close</Button>
-          </Modal.Footer>
-        </Modal>
+        <Dialog isShow={state.showModal} title="Setting" message={state.message} onClose={this.closeDialog} />
       </div>
     );
   }

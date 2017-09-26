@@ -1,6 +1,6 @@
 import { DetailState, DetailType } from '../types/';
 import { reducerWithInitialState } from 'typescript-fsa-reducers';
-import * as actions from '../actions/Search';
+import * as actions from '../actions/Routing';
 
 const initialState: DetailState = {
   type: DetailType.Search,

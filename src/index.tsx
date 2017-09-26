@@ -8,14 +8,18 @@ import './index.css';
 import Root from './containers/Root';
 import configureStore from './store/configureStore';
 import history from './middleware/history';
-import { persistStore } from 'redux-persist';
-import crosstabSync from 'redux-persist-crosstab';
+//import { persistStore } from 'redux-persist';
+//import crosstabSync from 'redux-persist-crosstab';
+import SettingActions from './actions/Setting';
 
 export const store = configureStore();
 
 // stateの永続化＆ブラウザ内での同期
-const persistor = persistStore(store, { blacklist: ['router'] });
-crosstabSync(persistor, { blacklist: ['router'] });
+//const persistor = persistStore(store, { blacklist: ['router'] });
+//crosstabSync(persistor, { blacklist: ['router'] });
+
+// firebaseの認証復元のためSettingActionsのスタティックコンストラクタを実行
+SettingActions.getInstance(store.dispatch);
 
 render(
   <AppContainer>

@@ -1,5 +1,4 @@
 import * as React from 'react';
-import Header from '../components/Header';
 import SearchBar from '../components/SearchBar';
 import Pager from '../components/Pager';
 import PhotoList from '../components/PhotoList';
@@ -23,13 +22,10 @@ class Search extends React.Component<SearchProps, any> {
   render() {
     const { items, condition, actions, isLoading } = this.props;
     return (
-      <div>
-        <Header />
-        <div styleName="page-body">
-          <SearchBar current={condition} actions={actions} />
-          <PhotoList items={items} actions={actions} isLoading={isLoading} />
-          {items.length > 0 ? <Pager current={condition} actions={actions} inverse={true} /> : ''}
-        </div>
+      <div styleName="page-body">
+        <SearchBar current={condition} actions={actions} />
+        <PhotoList items={items} actions={actions} isLoading={isLoading} />
+        {items.length > 0 ? <Pager current={condition} actions={actions} inverse={true} /> : ''}
       </div>
     );
   }

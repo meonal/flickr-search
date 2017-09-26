@@ -1,5 +1,4 @@
 import * as React from 'react';
-import Header from '../components/Header';
 import GeneralSetting from '../components/GeneralSetting';
 import SearchActions from '../actions/Search';
 import SettingActions from '../actions/Setting';
@@ -24,12 +23,9 @@ class Setting extends React.Component<SettingProps, any> {
   render() {
     const { setting, actions } = this.props;
     return (
-      <div>
-        <Header />
-        <div styleName="page-body">
-          <PageHeader>Setting</PageHeader>
-          <GeneralSetting setting={setting} actions={actions} />
-        </div>
+      <div styleName="page-body">
+        <PageHeader>Setting</PageHeader>
+        <GeneralSetting setting={setting} actions={actions} />
       </div>
     );
   }

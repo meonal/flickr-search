@@ -1,5 +1,4 @@
 import * as React from 'react';
-import Header from '../components/Header';
 import PhotoList from '../components/PhotoList';
 import SearchActions from '../actions/Search';
 import { connect } from 'react-redux';
@@ -21,13 +20,10 @@ class Fav extends React.Component<SearchProps, any> {
   render() {
     const { items, actions } = this.props;
     return (
-      <div>
-        <Header />
-        <div styleName="page-body">
-          <PageHeader>Fav</PageHeader>
-          <h4>{items.length === 0 ? '写真をFavしよう！' : ''}</h4>
-          <PhotoList items={items} actions={actions} />
-        </div>
+      <div styleName="page-body">
+        <PageHeader>Fav</PageHeader>
+        <h4>{items.length === 0 ? '写真をFavしよう！' : ''}</h4>
+        <PhotoList items={items} actions={actions} />
       </div>
     );
   }

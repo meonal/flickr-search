@@ -1,11 +1,11 @@
 import actionCreatorFactory from 'typescript-fsa';
 import bindThunkAction from './bindThunkAction';
+import RoutingActions from './Routing';
 import * as constants from '../constants/';
 import axios from 'axios';
-import { push } from 'react-router-redux';
 import {
   SearchCondition, State, PhotoItem, SearchType,
-  DetailType, PhotoResult, MyError, Photos
+  PhotoResult, MyError, Photos
 } from '../types';
 
 // Action Creator
@@ -13,7 +13,6 @@ import {
 
 const actionCreator = actionCreatorFactory();
 
-export const setDetail = actionCreator<{ id: string, type: DetailType }>('SET_DETAIL');
 export const toggleFav = actionCreator<{ id: string, item: PhotoItem | undefined }>('TOGGLE_FAV');
 export const clearFavs = actionCreator('CLEAR_FAVS');
 export const searchPhoto = actionCreator.async<
@@ -37,6 +36,7 @@ export default class SearchActions {
 
   private constructor(dispatch: any) {
     this.dispatch = dispatch;
+    this.routing = RoutingActions.getInstance(dispatch);
   }
   static getInstance(dispatch: any) {
     if (!this.instance) {
@@ -44,15 +44,8 @@ export default class SearchActions {
     }
     return this.instance;
   }
-
-  // 画面遷移
-  // Presentation Componentの再利用性を考慮して外側から注入する
-  gotoSearch = () => this.dispatch(push('/'));
-  gotoFav = () => this.dispatch(push('/fav'));
-  gotoDetail = (id: string, pathname: string) => {
-    this.dispatch(setDetail({ id, type: DetailType.Parse(pathname) }));
-    this.dispatch(push('/detail/' + id));
-  }
+  // other Actions
+  routing: RoutingActions;
 
   // Action
   toggleFav = (id: string) => this.dispatch(this.toggleFavWorker(id));
@@ -62,7 +55,7 @@ export default class SearchActions {
 
   fetchPhotoTransition = async (condition: SearchCondition, path: string) => {
     if (path !== '/') {
-      this.gotoSearch();
+      this.routing.gotoSearch();
     }
     await this.fetchPhoto(condition);
   }

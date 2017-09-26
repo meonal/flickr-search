@@ -36,7 +36,7 @@ class PhotoItem extends React.Component<Props, object> {
             {item.ownername}</a>
         </div>
         <div styleName="count">{item.views} Views</div>
-        <Button styleName="space" bsSize="small" onClick={() => actions.gotoDetail(item.id, pathname)} >
+        <Button styleName="space" bsSize="small" onClick={() => actions.routing.gotoDetail(item.id, pathname)} >
           <Glyphicon glyph="info-sign" />
         </Button>
         <Button bsStyle={bsStyle} bsSize="small" onClick={() => actions.toggleFav(item.id)} >

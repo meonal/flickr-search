@@ -1,5 +1,4 @@
 import * as React from 'react';
-import Header from '../components/Header';
 import PhotoDetail from '../components/PhotoDetail';
 import SearchActions from '../actions/Search';
 import { connect } from 'react-redux';
@@ -30,11 +29,8 @@ class Detail extends React.Component<SearchProps, any> {
     const item = thumbnails.find(x => x.id === id)!;
 
     return (
-      <div>
-        <Header />
-        <div styleName="page-body">
-          <PhotoDetail item={item} thumbnails={thumbnails} actions={actions} />
-        </div>
+      <div styleName="page-body">
+        <PhotoDetail item={item} thumbnails={thumbnails} actions={actions} />
       </div>
     );
   }

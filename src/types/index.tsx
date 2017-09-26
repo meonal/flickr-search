@@ -1,6 +1,7 @@
 import * as constants from '../constants';
 import * as moment from 'moment';
 import { RouterState } from 'react-router-redux';
+import { UserInfo } from 'firebase';
 
 // state
 
@@ -99,6 +100,7 @@ export enum ColorTheme {
 
 export interface SettingState {
   theme: ColorTheme;
+  user: UserInfo;
 }
 
 // props (View)
