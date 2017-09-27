@@ -22,7 +22,7 @@ class Fav extends React.Component<SearchProps, any> {
     return (
       <div styleName="page-body">
         <PageHeader>Fav</PageHeader>
-        <h4>{items.length === 0 ? '写真をFavしよう！' : ''}</h4>
+        <h4>{items.length === 0 ? "Let's Fav!!" : ''}</h4>
         <PhotoList items={items} actions={actions} />
       </div>
     );

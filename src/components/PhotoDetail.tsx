@@ -51,7 +51,7 @@ class PhotoDetail extends React.Component<Props, object> {
               <Button styleName="space" onClick={() => window.open().location.href = flickrUrl} >
                 <span styleName="bold">Open Flickr</span>
               </Button>
-              <Button bsStyle={bsStyle} onClick={() => actions.toggleFav(item.id)} >
+              <Button bsStyle={bsStyle} onClick={() => actions.fav.toggleFav(item)} >
                 <Glyphicon glyph={star} />
               </Button>
             </div>

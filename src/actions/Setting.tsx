@@ -1,5 +1,6 @@
 import actionCreatorFactory from 'typescript-fsa';
 import { State, SettingState, ColorTheme } from '../types';
+import FavActions from './Fav';
 import * as db from '../firebase/db/setting';
 import firebase from '../firebase';
 
@@ -17,6 +18,7 @@ export default class SettingActions {
   private constructor(dispatch: any, getState: any) {
     this.dispatch = dispatch;
     this.getState = getState;
+    this.fav = FavActions.getInstance(dispatch);
   }
   static getInstance(dispatch?: any, getState?: any) {
     if (!this.instance) {
@@ -24,6 +26,7 @@ export default class SettingActions {
     }
     return this.instance;
   }
+  fav: FavActions;
 
   // Actions
 
@@ -32,9 +35,9 @@ export default class SettingActions {
     this.writeSetting();
   }
 
-  syncSetting = () => {
+  subscribeSettingChanged = async () => {
     const userid = firebase.auth().currentUser!.uid;
-    return db.readSetting(userid, setting => this.dispatch(syncSettig(setting)));
+    return db.subscribeSettingChanged(userid, setting => this.dispatch(syncSettig(setting)));
   }
 
   // 内部実装

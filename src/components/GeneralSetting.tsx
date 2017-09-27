@@ -1,6 +1,6 @@
 import * as React from 'react';
 import './GeneralSetting.css';
-import SearchActions from '../actions/Search';
+import FavActions from '../actions/Fav';
 import SettingActions from '../actions/Setting';
 import AccountActions from '../actions/Account';
 import { ColorTheme, SettingState } from '../types';
@@ -13,7 +13,7 @@ import {
 interface Props {
   setting: SettingState;
   actions: {
-    search: SearchActions;
+    fav: FavActions;
     setting: SettingActions;
     account: AccountActions;
   };
@@ -42,7 +42,7 @@ class GeneralSetting extends React.Component<Props, object> {
   }
   resetFav() {
     const { actions } = this.props;
-    actions.search.clearFav();
+    actions.fav.clearFav();
     this.setState({ message: 'Favをリセットしました。' });
     this.openDialog();
   }

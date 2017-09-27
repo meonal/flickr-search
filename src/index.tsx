@@ -13,6 +13,7 @@ import history from './middleware/history';
 import SettingActions from './actions/Setting';
 import AccountActions from './actions/Account';
 import SearchActions from './actions/Search';
+import FavActions from './actions/Fav';
 import RoutingActions from './actions/Routing';
 
 export const store = configureStore();
@@ -30,7 +31,7 @@ RoutingActions.getInstance(store.dispatch);
 SettingActions.getInstance(store.dispatch, store.getState);
 AccountActions.getInstance(store.dispatch);
 SearchActions.getInstance(store.dispatch);
-
+FavActions.getInstance(store.dispatch, store.getState);
 
 render(
   <AppContainer>

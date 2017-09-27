@@ -39,7 +39,7 @@ class PhotoItem extends React.Component<Props, object> {
         <Button styleName="space" bsSize="small" onClick={() => actions.routing.gotoDetail(item.id, pathname)} >
           <Glyphicon glyph="info-sign" />
         </Button>
-        <Button bsStyle={bsStyle} bsSize="small" onClick={() => actions.toggleFav(item.id)} >
+        <Button bsStyle={bsStyle} bsSize="small" onClick={() => actions.fav.toggleFav(item)} >
           <Glyphicon glyph={star} />
         </Button>
       </div>

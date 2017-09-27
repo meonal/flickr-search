@@ -10,25 +10,6 @@ const initialState: SearchState = {
 };
 
 const search = reducerWithInitialState(initialState)
-  // fav  
-  .case(actions.toggleFav, (state, obj) => {
-    const { id } = obj;
-    if (state.photos.length === 0) return state;
-
-    let idx = state.photos.findIndex(x => x.id === id);
-    if (idx === -1) return state;
-
-    const newState = { ...state };
-    newState.photos[idx].isFav = !newState.photos[idx].isFav;
-    return newState;
-  })
-  .case(actions.clearFavs, (state) => {
-    const photos = state.photos.map(x => {
-      return { ...x, isFav: false };
-    });
-    return { ...state, photos };
-  })
-
   // searchPhoto(async)
   .case(actions.searchPhoto.started, (state, payload) => {
     const condition = { ...state.condition, message: '' };

@@ -33,8 +33,20 @@ class Search extends React.Component<SearchProps, any> {
 
 export function mapStateToProps(state: State): StateProps {
   const search = state.search;
+  const fav = state.fav;
+  // fav反映
+  console.time('a');
+  const items = search.photos.map(x => {
+    let item = new PhotoViewItem(x);
+    const idx = fav.photos.findIndex(p => p.id === x.id);
+    if (idx !== -1) {
+      item.isFav = true;
+    }
+    return item;
+  });
+  console.timeEnd('a');
   return {
-    items: search.photos.map(x => new PhotoViewItem(x)),
+    items,
     viewType: search.viewType,
     condition: search.condition,
     isLoading: search.isLoading,

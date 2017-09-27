@@ -1,6 +1,6 @@
 import * as React from 'react';
 import GeneralSetting from '../components/GeneralSetting';
-import SearchActions from '../actions/Search';
+import FavActions from '../actions/Fav';
 import SettingActions from '../actions/Setting';
 import AccountActions from '../actions/Account';
 import { connect } from 'react-redux';
@@ -13,7 +13,7 @@ interface StateProps {
 }
 interface DispatchProps {
   actions: {
-    search: SearchActions;
+    fav: FavActions;
     setting: SettingActions;
     account: AccountActions;
   };
@@ -40,7 +40,7 @@ export function mapStateToProps(state: State): StateProps {
 export function mapDispatchToProps(dispatch: any): DispatchProps {
   return {
     actions: {
-      search: SearchActions.getInstance(),
+      fav: FavActions.getInstance(),
       setting: SettingActions.getInstance(),
       account: AccountActions.getInstance(),
     }

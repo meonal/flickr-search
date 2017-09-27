@@ -1,6 +1,7 @@
 import actionCreatorFactory from 'typescript-fsa';
 import bindThunkAction from './bindThunkAction';
 import RoutingActions from './Routing';
+import FavActions from './Fav';
 import * as constants from '../constants/';
 import axios from 'axios';
 import {
@@ -13,8 +14,6 @@ import {
 
 const actionCreator = actionCreatorFactory();
 
-export const toggleFav = actionCreator<{ id: string, item: PhotoItem | undefined }>('TOGGLE_FAV');
-export const clearFavs = actionCreator('CLEAR_FAVS');
 export const searchPhoto = actionCreator.async<
   State,
   SearchCondition,
@@ -37,6 +36,7 @@ export default class SearchActions {
   private constructor(dispatch: any) {
     this.dispatch = dispatch;
     this.routing = RoutingActions.getInstance(dispatch);
+    this.fav = FavActions.getInstance(dispatch);
   }
   static getInstance(dispatch?: any) {
     if (!this.instance) {
@@ -46,10 +46,9 @@ export default class SearchActions {
   }
   // other Actions
   routing: RoutingActions;
+  fav: FavActions;
 
   // Action
-  toggleFav = (id: string) => this.dispatch(this.toggleFavWorker(id));
-  clearFav = () => this.dispatch(clearFavs());
   searchPhoto = async (condition: SearchCondition) => await this.dispatch(this.searchPhotoWorker(condition));
   fetchPhoto = async (condition: SearchCondition) => await this.dispatch(this.fetchPhotoWorker(condition));
 
@@ -78,14 +77,6 @@ export default class SearchActions {
     type === SearchType.User ? this.fetchPhoto : this.searchPhoto
 
   // 内部実装
-
-  // 写真のFavのON/OFF
-  private toggleFavWorker = (id: string) =>
-    (dispatch: any, getState: () => State) => {
-      const { search } = getState();
-      const item = search.photos.find(x => x.id === id);
-      dispatch(toggleFav({ id, item }));
-    }
 
   // 写真の検索
   private searchPhotoWorker = bindThunkAction(

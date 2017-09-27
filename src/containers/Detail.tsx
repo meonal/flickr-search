@@ -24,8 +24,20 @@ class Detail extends React.Component<SearchProps, any> {
     const photos = state.detail.type === DetailType.Fav
       ? state.fav.photos
       : state.search.photos;
+    // サムネデータ作成
     const idx = photos.findIndex(photo => photo.id === id)!;
-    const thumbnails = findNeighbor<PhotoItem>(photos, idx, 2).map(x => new PhotoViewItem(x));
+    let thumbnails = findNeighbor<PhotoItem>(photos, idx, 2).map(x => new PhotoViewItem(x));
+    // fav反映
+    if (state.detail.type === DetailType.Search) {
+      thumbnails = thumbnails.map(x => {
+        const idx = state.fav.photos.findIndex(p => p.id === x.id);
+        if (idx !== -1) {
+          x.isFav = true;
+        }
+        return x;
+      });
+    }
+
     const item = thumbnails.find(x => x.id === id)!;
 
     return (

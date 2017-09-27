@@ -4,6 +4,7 @@ import firebase from '../firebase';
 import { User, FirebaseError } from 'firebase';
 import SettingActions from './Setting';
 import RoutingActions from './Routing';
+import FavActions from './Fav';
 
 const actionCreator = actionCreatorFactory();
 
@@ -18,6 +19,7 @@ export default class AccountActions {
     this.dispatch = dispatch;
     this.routing = RoutingActions.getInstance(dispatch);
     this.setting = SettingActions.getInstance(dispatch);
+    this.fav = FavActions.getInstance(dispatch);
     this.registerOnAuthStateChanged();
   }
   static getInstance(dispatch?: any) {
@@ -29,6 +31,7 @@ export default class AccountActions {
   // other Actions
   routing: RoutingActions;
   setting: SettingActions;
+  fav: FavActions;
 
   // Actions
   logout = () => {
@@ -62,8 +65,15 @@ export default class AccountActions {
   private registerOnAuthStateChanged() {
     firebase.auth().onAuthStateChanged((user) => {
       if (user) {
-        this.setting.syncSetting();
+        // auth
         this.dispatch(authStateChanged(user));
+        // setting
+        this.setting.subscribeSettingChanged();
+        // db once
+        //this.fav.syncFav();
+        // db on
+        this.fav.subscribeFavAdded();
+        this.fav.subscribeFavRemoved();
       } else {
         this.dispatch(authStateChanged(undefined));
       }
