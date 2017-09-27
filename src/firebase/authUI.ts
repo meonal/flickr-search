@@ -8,7 +8,11 @@ export const uiConfig = {
     firebase.auth.TwitterAuthProvider.PROVIDER_ID,
     firebase.auth.GithubAuthProvider.PROVIDER_ID,
     firebase.auth.EmailAuthProvider.PROVIDER_ID,
-    firebase.auth.PhoneAuthProvider.PROVIDER_ID,
+    {
+      provider: firebase.auth.PhoneAuthProvider.PROVIDER_ID,
+      defaultCountry: 'JP',
+    }
+
   ],
   callbacks: {
     signInSuccess: (user: firebase.User, credential: firebase.auth.AuthCredential, redirectUrl: string) => {
