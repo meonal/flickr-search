@@ -11,7 +11,7 @@ export const uiConfig = {
     firebase.auth.PhoneAuthProvider.PROVIDER_ID,
   ],
   callbacks: {
-    signInSuccess: (user: firebase.User, credential, redirectUrl) => {
+    signInSuccess: (user: firebase.User, credential: firebase.auth.AuthCredential, redirectUrl: string) => {
       if (user.email !== null && !user.emailVerified) {
         user.sendEmailVerification().then(() => {
           alert('確認メールを送信しました。');

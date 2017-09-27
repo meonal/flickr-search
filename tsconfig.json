@@ -12,11 +12,16 @@
     "forceConsistentCasingInFileNames": true,
     "noImplicitReturns": true,
     "noImplicitThis": true,
-    "noImplicitAny": false,
+    "noImplicitAny": true,
     "strictNullChecks": true,
     "suppressImplicitAnyIndexErrors": true,
     "noUnusedLocals": true,
-    "pretty": true
+    "pretty": true,
+    // 自作の型定義の場所
+    "baseUrl": "",
+    "paths": {
+      "*": ["typings/*"]
+    }
   },
   "exclude": [
     "node_modules",
