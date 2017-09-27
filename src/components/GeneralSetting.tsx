@@ -2,6 +2,7 @@ import * as React from 'react';
 import './GeneralSetting.css';
 import SearchActions from '../actions/Search';
 import SettingActions from '../actions/Setting';
+import AccountActions from '../actions/Account';
 import { ColorTheme, SettingState } from '../types';
 import Dialog from './Dialog';
 import {
@@ -14,6 +15,7 @@ interface Props {
   actions: {
     search: SearchActions;
     setting: SettingActions;
+    account: AccountActions;
   };
 }
 
@@ -50,12 +52,12 @@ class GeneralSetting extends React.Component<Props, object> {
   }
   async deleteUser() {
     const { actions } = this.props;
-    const message = await actions.setting.deleteUser();
+    const message = await actions.account.deleteUser();
     this.setState({ message });
     this.openDialog(() => {
       this.close();
       const { actions } = this.props;
-      actions.setting.routing.gotoSearch();
+      actions.account.routing.gotoSearch();
     });
   }
 

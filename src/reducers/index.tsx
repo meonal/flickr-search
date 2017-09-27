@@ -4,6 +4,7 @@ import search from './search';
 import fav from './fav';
 import detail from './detail';
 import setting from './setting';
+import account from './account';
 
 const rootReducer = combineReducers({
   router: routerReducer,
@@ -11,6 +12,7 @@ const rootReducer = combineReducers({
   fav,
   detail,
   setting,
+  account,
 });
 
 export default rootReducer;

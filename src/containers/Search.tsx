@@ -42,7 +42,7 @@ export function mapStateToProps(state: State): StateProps {
 }
 
 export function mapDispatchToProps(dispatch: any): DispatchProps {
-  return { actions: SearchActions.getInstance(dispatch) };
+  return { actions: SearchActions.getInstance() };
 }
 
 export default connect<StateProps, DispatchProps, any>(mapStateToProps, mapDispatchToProps)(Search);

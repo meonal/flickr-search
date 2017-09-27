@@ -7,9 +7,10 @@ import { UserInfo } from 'firebase';
 
 export interface State {
   search: SearchState;
-  fav: FavState;
+  fav: FavState;          // 永続化
   detail: DetailState;
-  setting: SettingState;
+  setting: SettingState;  // 永続化
+  account: AccountState;  // view only （本体はfirebase.auth().user）
   router: RouterState;    // react-router-redux
 }
 
@@ -100,6 +101,9 @@ export enum ColorTheme {
 
 export interface SettingState {
   theme: ColorTheme;
+}
+
+export interface AccountState {
   user: UserInfo;
 }
 

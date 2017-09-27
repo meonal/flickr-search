@@ -38,7 +38,7 @@ export default class SearchActions {
     this.dispatch = dispatch;
     this.routing = RoutingActions.getInstance(dispatch);
   }
-  static getInstance(dispatch: any) {
+  static getInstance(dispatch?: any) {
     if (!this.instance) {
       this.instance = new SearchActions(dispatch);
     }

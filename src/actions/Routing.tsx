@@ -12,7 +12,7 @@ export default class RoutingActions {
   private constructor(dispatch: any) {
     this.dispatch = dispatch;
   }
-  static getInstance(dispatch: any) {
+  static getInstance(dispatch?: any) {
     if (!this.instance) {
       this.instance = new RoutingActions(dispatch);
     }

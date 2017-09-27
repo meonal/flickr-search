@@ -11,6 +11,9 @@ import history from './middleware/history';
 //import { persistStore } from 'redux-persist';
 //import crosstabSync from 'redux-persist-crosstab';
 import SettingActions from './actions/Setting';
+import AccountActions from './actions/Account';
+import SearchActions from './actions/Search';
+import RoutingActions from './actions/Routing';
 
 export const store = configureStore();
 
@@ -18,8 +21,16 @@ export const store = configureStore();
 //const persistor = persistStore(store, { blacklist: ['router'] });
 //crosstabSync(persistor, { blacklist: ['router'] });
 
-// firebaseの認証復元のためSettingActionsのスタティックコンストラクタを実行
-SettingActions.getInstance(store.dispatch);
+// ActionDispatcherの初期化
+// ・シングルトンのコンストラクタで実行したいものがある
+// ・getState()がほしい
+// 等の理由のためここで初回の生成を行っておく
+//const { dispatch, getState } = store.dispatch;
+RoutingActions.getInstance(store.dispatch);
+SettingActions.getInstance(store.dispatch, store.getState);
+AccountActions.getInstance(store.dispatch);
+SearchActions.getInstance(store.dispatch);
+
 
 render(
   <AppContainer>

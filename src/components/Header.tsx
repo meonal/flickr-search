@@ -2,15 +2,15 @@ import * as React from 'react';
 import { Navbar, Nav, NavItem, NavDropdown, MenuItem } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 import { Link } from 'react-router-dom';
-import { SettingState } from '../types';
-import SettingActions from '../actions/Setting';
+import { AccountState } from '../types';
+import AccountActions from '../actions/Account';
 import FirebaseAuth from './FirebaseAuth';
 import Dialog from './Dialog';
 import './Header.css';
 
 interface Props {
-  setting: SettingState;
-  actions: SettingActions;
+  account: AccountState;
+  actions: AccountActions;
 }
 interface State {
   showModal: boolean;
@@ -40,9 +40,9 @@ class Header extends React.Component<Props, State> {
     actions.logout();
   }
   render() {
-    const { setting } = this.props;
+    const { account } = this.props;
     const { showModal } = this.state;
-    const user = setting.user;
+    const user = account.user;
     return (
       <div>
         <Navbar inverse={true} collapseOnSelect={true} fixedTop={true}>

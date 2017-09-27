@@ -1,34 +1,34 @@
 import * as React from 'react';
 import Header from '../components/Header';
 import { connect } from 'react-redux';
-import { State, SettingState } from '../types';
-import SettingActions from '../actions/Setting';
+import { State, AccountState } from '../types';
+import AccountActions from '../actions/Account';
 import './Container.css';
 
 interface StateProps {
-  setting: SettingState;
+  account: AccountState;
 }
 interface DispatchProps {
-  actions: SettingActions;
+  actions: AccountActions;
 }
 
 type Props = StateProps & DispatchProps;
 
 class HeaderContainer extends React.Component<Props, any> {
   render() {
-    const { setting, actions } = this.props;
+    const { account, actions } = this.props;
     return (
-      <Header setting={setting} actions={actions} />
+      <Header account={account} actions={actions} />
     );
   }
 }
 
 export function mapStateToProps(state: State): StateProps {
-  return { setting: state.setting };
+  return { account: state.account };
 }
 
 export function mapDispatchToProps(dispatch: any): DispatchProps {
-  return { actions: SettingActions.getInstance(dispatch) };
+  return { actions: AccountActions.getInstance() };
 }
 
 export default connect<StateProps, DispatchProps, any>(mapStateToProps, mapDispatchToProps)(HeaderContainer);

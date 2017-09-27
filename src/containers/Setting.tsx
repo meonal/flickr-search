@@ -2,6 +2,7 @@ import * as React from 'react';
 import GeneralSetting from '../components/GeneralSetting';
 import SearchActions from '../actions/Search';
 import SettingActions from '../actions/Setting';
+import AccountActions from '../actions/Account';
 import { connect } from 'react-redux';
 import { State, SettingState } from '../types';
 import { PageHeader } from 'react-bootstrap';
@@ -14,6 +15,7 @@ interface DispatchProps {
   actions: {
     search: SearchActions;
     setting: SettingActions;
+    account: AccountActions;
   };
 }
 
@@ -38,8 +40,9 @@ export function mapStateToProps(state: State): StateProps {
 export function mapDispatchToProps(dispatch: any): DispatchProps {
   return {
     actions: {
-      search: SearchActions.getInstance(dispatch),
-      setting: SettingActions.getInstance(dispatch),
+      search: SearchActions.getInstance(),
+      setting: SettingActions.getInstance(),
+      account: AccountActions.getInstance(),
     }
   };
 }
