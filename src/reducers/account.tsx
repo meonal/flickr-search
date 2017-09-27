@@ -18,7 +18,15 @@ const setting = reducerWithInitialState(initialState)
   .case(actions.authStateChanged, (state, user) => {
     if (user) {
       const { displayName, email, phoneNumber, photoURL, providerId, uid } = user;
-      const name = displayName === null ? email : displayName;
+      let name;
+      if (!displayName) {
+        if (!email) {
+          name = '名前未設定';
+        }
+        name = email;
+      } else {
+        name = displayName;
+      }
       return {
         ...state,
         user: {
