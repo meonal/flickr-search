@@ -8,19 +8,20 @@ APIのEndpointはAzure Funcitionsで作っています。
 cold startのため初回の検索は10秒ほどかかります。
 
 ## 使い方
+- 適当な場所にclone
+- src/firebase/config.ts に  
+ firebase console の [ウェブアプリにFirebaseを追加] に記載されているconfigの中身をペーストして保存
 - yarn install
 - yarn start
-
-適当な場所にcloneして上記実行。
 
 ## 基本構成
 - react 15.6.1
 - react-edux 5.0.6
 - typescript 2.5.2
 
-Create React Appでyarn install, yarn eject。typescriptを最新にアップデート。
+Create React Appでyarn install, yarn eject。typescriptを最新にアップデートした状態。
 
-## Done
+## 実装済み
 
 ### 開発環境系
 - react-hot-loader
@@ -55,7 +56,32 @@ race conditionが発生するようなアプリではredux-saga、rxjsなどが�
 
 localstorageにstateを保存して復元・同期。  
 なので、同期に関してははデバイス間ではなくブラウザのタブ間。  
-デバッグ時に再現手順を実行しなくてよいため思いの外役にたった。
+デバッグ時に再現手順を実行しなくてよいため思いの外役にたった。  
+firebaseでの永続化・リアルタイム同期を実装した現在は未使用。
+
+### 認証
+- firebase
+- firebaseui
+
+Firebase Authenticationを使用。  
+主要なOAuthプロバイダ（Google, Twitter, GitHub）でのOAuth認証、  
+メール＆パスワードもしくはSMSでのアカウント作成＆認証が簡単に実装できた。  
+前者（OAuth関連）だけなら自分で実装した場合と比較して少し手間が省ける程度だが  
+後者のメール＆パスワード認証は、最初から必要な機能（確認メール送信、パスワード・メールアドレス変更など）が用意されている、  
+SMS認証はそもそも自分で用意するのが無理なので利用価値は高い。  
+fireabae consoleからパスワードのハッシュ化パラメータがエクスポート可能なので他への移行は可能（試してない）  
+カスタムOAuthプロバイダとしてLINEなどを追加するやり方も公式ブログで紹介あり。（試してない）
+
+firabaseuiを使うと専用UIを実装しなくていいため更に楽。  
+
+### 永続化＆リアルタイム同期
+- firebase
+
+Firebase Realtime Databaseを使用。  
+非常に簡単に永続化、リアルタイムでのデバイス間同期ができた。  
+まだ簡単な使い方（ユーザーの設定とFavの同期）にしか使ってないため、特に書くことがない。  
+fireabae consoleからデータのエクスポートが可能なので他のドキュメントDBへの移行は可能。（試してない）  
+パフォーマンス観点では、N:NのデータではRDBMSのようなリンクテーブルではなく非正規化がいいらしい（試してない）  
 
 ### CSS
 - babel-plugin-react-css-modules
