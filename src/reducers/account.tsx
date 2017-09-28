@@ -22,8 +22,9 @@ const setting = reducerWithInitialState(initialState)
       if (!displayName) {
         if (!email) {
           name = '名前未設定';
+        } else {
+          name = email;
         }
-        name = email;
       } else {
         name = displayName;
       }

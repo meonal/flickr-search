@@ -11,7 +11,7 @@ const setting = reducerWithInitialState(initialState)
     return { ...state, theme };
   })
   .case(actions.syncSettig, (state, setting) => {
-    return setting;
+    return setting ? setting : state;
   });
 
 export default setting;
