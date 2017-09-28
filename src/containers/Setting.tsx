@@ -6,6 +6,7 @@ import AccountActions from '../actions/Account';
 import { connect } from 'react-redux';
 import { State, SettingState } from '../types';
 import { PageHeader } from 'react-bootstrap';
+import Header from './Header';
 import './Container.css';
 
 interface StateProps {
@@ -26,6 +27,7 @@ class Setting extends React.Component<SettingProps, any> {
     const { setting, actions } = this.props;
     return (
       <div styleName="page-body">
+        <Header />
         <PageHeader>Setting</PageHeader>
         <GeneralSetting setting={setting} actions={actions} />
       </div>

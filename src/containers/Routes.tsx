@@ -1,5 +1,4 @@
 import * as React from 'react';
-import Header from './Header';
 import Search from './Search';
 import Fav from './Fav';
 import Setting from './Setting';
@@ -11,7 +10,6 @@ export class Routes extends React.Component<any, any> {
   render() {
     return (
       <div>
-        <Header />
         <Route exact path="/" component={Search} />
         <Route path="/fav" component={Fav} />
         <Route path="/setting" component={Setting} />

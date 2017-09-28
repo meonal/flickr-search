@@ -3,6 +3,7 @@ import PhotoDetail from '../components/PhotoDetail';
 import SearchActions from '../actions/Search';
 import { connect } from 'react-redux';
 import { State, PhotoViewItem, PhotoItem, DetailType } from '../types';
+import Header from './Header';
 import './Container.css';
 
 interface StateProps {
@@ -42,6 +43,7 @@ class Detail extends React.Component<SearchProps, any> {
 
     return (
       <div styleName="page-body">
+        <Header />
         <PhotoDetail item={item} thumbnails={thumbnails} actions={actions} />
       </div>
     );

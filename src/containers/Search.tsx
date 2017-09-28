@@ -5,6 +5,7 @@ import PhotoList from '../components/PhotoList';
 import SearchActions from '../actions/Search';
 import { connect } from 'react-redux';
 import { State, PhotoViewItem, ViewType, SearchCondition } from '../types';
+import Header from './Header';
 import './Container.css';
 
 interface StateProps {
@@ -23,6 +24,7 @@ class Search extends React.Component<SearchProps, any> {
     const { items, condition, actions, isLoading } = this.props;
     return (
       <div styleName="page-body">
+        <Header />
         <SearchBar current={condition} actions={actions} />
         <PhotoList items={items} actions={actions} isLoading={isLoading} />
         {items.length > 0 ? <Pager current={condition} actions={actions} inverse={true} /> : ''}
