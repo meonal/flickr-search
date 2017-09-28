@@ -3,7 +3,7 @@ import rootReducer from '../reducers';
 import thunk from 'redux-thunk';
 import logger from 'redux-logger';
 import { historyMiddleware } from '../middleware/history';
-import { autoRehydrate } from 'redux-persist';
+//import { autoRehydrate } from 'redux-persist';
 import { persistState } from 'redux-devtools';
 //import DevTools from '../containers/DevTools';
 
@@ -12,7 +12,7 @@ const sessionKey = match != null ? match.find(_ => true)! : '';
 
 const enhancer = compose(
   applyMiddleware(thunk, logger, historyMiddleware),
-  autoRehydrate(),
+  //autoRehydrate(),
   //DevTools.instrument(),
   persistState(sessionKey)
 );
