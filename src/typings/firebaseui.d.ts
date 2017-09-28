@@ -1,4 +1,4 @@
-declare module "firebaseui" {
+declare module 'firebaseui' {
 
   import * as firebase from 'firebase';
 

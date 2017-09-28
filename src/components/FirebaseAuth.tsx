@@ -26,6 +26,6 @@ export default class FirebaseAuth extends React.Component<Props, any> {
   render() {
     return (
       <div id={this.placeholderId} />
-    )
+    );
   }
 }

@@ -1,5 +1,4 @@
 import actionCreatorFactory from 'typescript-fsa';
-// import { State } from '../types';
 import firebase from '../firebase';
 import { User, FirebaseError } from 'firebase';
 import SettingActions from './Setting';
@@ -9,7 +8,7 @@ import FavActions from './Fav';
 const actionCreator = actionCreatorFactory();
 
 // 認証状態が変更
-export const authStateChanged = actionCreator<User | undefined>("AUTH_STATE_CHANGED");
+export const authStateChanged = actionCreator<User | undefined>('AUTH_STATE_CHANGED');
 
 export default class AccountActions {
   private static instance: AccountActions;
