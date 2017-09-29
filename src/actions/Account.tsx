@@ -53,7 +53,7 @@ export default class AccountActions {
         await firebase.auth().signOut();
         // The timeout allows the message to be displayed after the UI has
         // changed to the signed out state.
-        return '削除できませんでした。もう一度ログインしてから削除してください。';
+        return '一定期間、ログイン認証を行っていないため削除できませんでした。再度ログインしてから削除してください。';
       } else {
         return error.message;
       }
