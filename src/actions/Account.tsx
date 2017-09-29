@@ -68,11 +68,11 @@ export default class AccountActions {
         this.dispatch(authStateChanged(user));
         // setting
         this.setting.subscribeSettingChanged();
-        // db once
-        //this.fav.syncFav();
         // db on
         this.fav.subscribeFavAdded();
         this.fav.subscribeFavRemoved();
+        // db once
+        this.fav.syncFav();
       } else {
         this.dispatch(authStateChanged(undefined));
       }

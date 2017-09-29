@@ -21,7 +21,7 @@ export async function readFav(userId: string) {
 
 export function subscribeFavAdded(userId: string, action: (item: PhotoItem) => void) {
   const fav = db.ref('users/' + userId + '/fav');
-  return fav.on('child_added', (snapshot) => {
+  return fav.limitToLast(1).on('child_added', (snapshot) => {
     if (snapshot !== null) {
       action(snapshot.val());
     }
