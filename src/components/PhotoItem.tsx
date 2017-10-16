@@ -3,6 +3,7 @@ import { Button, Glyphicon } from 'react-bootstrap';
 import { PhotoViewItem, SearchCondition, SearchType } from '../types';
 import SearchActions from '../actions/Search';
 import { withRouter } from 'react-router-dom';
+import { Location } from 'history';
 import './PhotoItem.css';
 
 interface Props {
@@ -10,14 +11,15 @@ interface Props {
   actions: SearchActions;
   index: number;
   onPhotoClick: (index: number) => void;
+  location?: Location;  // inject by withRouter
 }
 
-class PhotoItem extends React.Component<Props, object> {
+export class PhotoItem extends React.Component<Props, object> {
   condition = new SearchCondition(SearchType.User);
 
   render() {
-    const { item, actions, index, onPhotoClick } = this.props;
-    const pathname = (this.props as any).location.pathname;
+    const { item, actions, index, onPhotoClick, location } = this.props;
+    const pathname = location!.pathname;
 
     const bsStyle = item.isFav ? 'success' : 'primary';
     const star = 'star' + (item.isFav ? '' : '-empty');

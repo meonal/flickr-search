@@ -1,0 +1,127 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`スナップショット 1`] = `
+<div
+  styleName="photo-item"
+>
+  <div
+    styleName="photo-area"
+  >
+    <a
+      href="#"
+      onClick={[Function]}
+    >
+      <img
+        alt="photo title"
+        src="http://example.com/s"
+        styleName="photo"
+      />
+    </a>
+  </div>
+  <div
+    styleName="title"
+  >
+    photo title
+  </div>
+  <div
+    styleName="author"
+  >
+    <a
+      href="#"
+      onClick={[Function]}
+    >
+      foo bar
+    </a>
+  </div>
+  <div
+    styleName="count"
+  >
+    100
+     Views
+  </div>
+  <button
+    className="btn btn-sm btn-default"
+    disabled={false}
+    onClick={[Function]}
+    styleName="space"
+    type="button"
+  >
+    <span
+      className="glyphicon glyphicon-info-sign"
+    />
+  </button>
+  <button
+    className="btn btn-sm btn-success"
+    disabled={false}
+    onClick={[Function]}
+    type="button"
+  >
+    <span
+      className="glyphicon glyphicon-star"
+    />
+  </button>
+</div>
+`;
+
+exports[`スナップショット スナップショット 1`] = `
+<div
+  styleName="photo-item"
+>
+  <div
+    styleName="photo-area"
+  >
+    <a
+      href="#"
+      onClick={[Function]}
+    >
+      <img
+        alt="photo title"
+        src="http://example.com/s"
+        styleName="photo"
+      />
+    </a>
+  </div>
+  <div
+    styleName="title"
+  >
+    photo title
+  </div>
+  <div
+    styleName="author"
+  >
+    <a
+      href="#"
+      onClick={[Function]}
+    >
+      foo bar
+    </a>
+  </div>
+  <div
+    styleName="count"
+  >
+    100
+     Views
+  </div>
+  <button
+    className="btn btn-sm btn-default"
+    disabled={false}
+    onClick={[Function]}
+    styleName="space"
+    type="button"
+  >
+    <span
+      className="glyphicon glyphicon-info-sign"
+    />
+  </button>
+  <button
+    className="btn btn-sm btn-success"
+    disabled={false}
+    onClick={[Function]}
+    type="button"
+  >
+    <span
+      className="glyphicon glyphicon-star"
+    />
+  </button>
+</div>
+`;
